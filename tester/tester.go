@@ -15,10 +15,12 @@ func RunTest(path string, task TestTask) {
 	for {
 		inStrings, err := ReadFile(fmt.Sprintf("%s/test.%d.in", path, nr))
 		if err != nil {
+			fmt.Println(err)
 			break
 		}
 		outStrings, err := ReadFile(fmt.Sprintf("%s/test.%d.out", path, nr))
 		if err != nil {
+			fmt.Println(err)
 			break
 		}
 		nr++
