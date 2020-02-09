@@ -47,10 +47,12 @@ func ReadFile(path string) ([]string, error) {
 		return nil, err
 	}
 	linesByte := bytes.Split(data, []byte("\n"))
-	linesString := make([]string, len(linesByte))
-	for i, item := range linesByte {
+	linesString := make([]string, 0, len(linesByte))
+	for _, item := range linesByte {
 		str := string(bytes.Trim(item, "\r"))
-		linesString[i] = str
+		if len(str) != 0 {
+			linesString = append(linesString, str)
+		}
 	}
 	return linesString, nil
 
